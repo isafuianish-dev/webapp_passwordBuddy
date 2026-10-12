@@ -71,13 +71,13 @@ body {
 .wip-gear-a {
   top: -14px;
   left: -10px;
-  animation: wip-spin 12s linear infinite;
+  animation: wip-spin 30s linear infinite;
 }
 
 .wip-gear-b {
   bottom: -8px;
   right: -4px;
-  animation: wip-spin-reverse 8s linear infinite;
+  animation: wip-spin-reverse 22s linear infinite;
 }
 
 @keyframes wip-spin {
@@ -123,14 +123,14 @@ body {
 
 .wip-bot-light {
   fill: var(--color-warning);
-  animation: wip-blink-light 1.3s ease-in-out infinite;
+  animation: wip-breathe-light 2.6s ease-in-out infinite;
 }
 
-.wip-bot-eye {
-  fill: var(--color-primary);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: wip-blink-eye 4.5s ease-in-out infinite;
+.wip-bot-eye-closed {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
 }
 
 .wip-bot-mouth {
@@ -140,68 +140,43 @@ body {
   stroke-linecap: round;
 }
 
-.wip-bot-arm-r {
-  transform-box: fill-box;
-  transform-origin: left center;
-  animation: wip-wave 2.4s ease-in-out infinite;
-}
-
-@keyframes wip-blink-light {
+@keyframes wip-breathe-light {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.25; }
+  50% { opacity: 0.3; }
 }
 
-@keyframes wip-blink-eye {
-  0%, 92%, 100% { transform: scaleY(1); }
-  96% { transform: scaleY(0.1); }
-}
-
-@keyframes wip-wave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-16deg); }
-  50% { transform: rotate(4deg); }
-  75% { transform: rotate(-10deg); }
-}
-
-.wip-wrench {
+.wip-sleep {
   position: absolute;
-  right: 14px;
-  bottom: 26px;
+  right: 8px;
+  top: 4px;
   z-index: 2;
   color: var(--color-primary);
-  transform-origin: 70% 70%;
-  animation: wip-wrench-turn 2.4s ease-in-out infinite;
-}
-
-@keyframes wip-wrench-turn {
-  0%, 100% { transform: rotate(-22deg); }
-  50% { transform: rotate(18deg); }
-}
-
-.wip-spark {
-  position: absolute;
-  right: 30px;
-  bottom: 40px;
-  z-index: 2;
-  color: var(--color-warning);
   opacity: 0;
-  animation: wip-spark-float 2.4s ease-out infinite;
+  animation: wip-sleep-float 3.6s ease-out infinite;
 }
 
-.wip-spark-a {
-  animation-delay: 0.4s;
+.wip-sleep-a {
+  animation-delay: 0.3s;
 }
 
-.wip-spark-b {
-  right: 12px;
-  bottom: 44px;
-  animation-delay: 1.4s;
+.wip-sleep-b {
+  right: -6px;
+  top: 14px;
+  animation-delay: 2s;
 }
 
-@keyframes wip-spark-float {
-  0% { transform: translateY(0) scale(0.5); opacity: 0; }
-  25% { opacity: 1; }
-  100% { transform: translateY(-26px) scale(1); opacity: 0; }
+@keyframes wip-sleep-float {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: translate(14px, -22px) scale(1); opacity: 0; }
+}
+
+.wip-toolbox {
+  position: absolute;
+  left: 6px;
+  bottom: 4px;
+  z-index: 2;
+  color: var(--color-text-muted);
 }
 
 .wip-card h1 {
@@ -226,14 +201,14 @@ body {
 
 .wip-progress-fill {
   height: 100%;
-  width: 55%;
+  width: 100%;
   background: repeating-linear-gradient(
     45deg,
     var(--color-warning) 0 8px,
     var(--color-text) 8px 16px
   );
   background-size: 32px 32px;
-  animation: wip-stripes 1s linear infinite;
+  animation: wip-stripes 6s linear infinite;
 }
 
 @keyframes wip-stripes {
@@ -256,10 +231,7 @@ body {
   :root:not([data-motion="on"]) .wip-gear-a,
   :root:not([data-motion="on"]) .wip-gear-b,
   :root:not([data-motion="on"]) .wip-bot-light,
-  :root:not([data-motion="on"]) .wip-bot-eye,
-  :root:not([data-motion="on"]) .wip-bot-arm-r,
-  :root:not([data-motion="on"]) .wip-wrench,
-  :root:not([data-motion="on"]) .wip-spark,
+  :root:not([data-motion="on"]) .wip-sleep,
   :root:not([data-motion="on"]) .wip-progress-fill {
     animation: none !important;
   }
@@ -268,10 +240,7 @@ body {
 :root[data-motion="reduced"] .wip-gear-a,
 :root[data-motion="reduced"] .wip-gear-b,
 :root[data-motion="reduced"] .wip-bot-light,
-:root[data-motion="reduced"] .wip-bot-eye,
-:root[data-motion="reduced"] .wip-bot-arm-r,
-:root[data-motion="reduced"] .wip-wrench,
-:root[data-motion="reduced"] .wip-spark,
+:root[data-motion="reduced"] .wip-sleep,
 :root[data-motion="reduced"] .wip-progress-fill {
   animation: none !important;
 }
