@@ -1,0 +1,277 @@
+
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.wip-app {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 24px;
+}
+
+.wip-toolbar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.theme-toggle-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-panel);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.wip-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 32px 36px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-panel);
+  text-align: center;
+}
+
+.wip-scene {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.wip-gear {
+  position: absolute;
+  color: var(--color-primary);
+  opacity: 0.16;
+}
+
+.wip-gear-a {
+  top: -14px;
+  left: -10px;
+  animation: wip-spin 12s linear infinite;
+}
+
+.wip-gear-b {
+  bottom: -8px;
+  right: -4px;
+  animation: wip-spin-reverse 8s linear infinite;
+}
+
+@keyframes wip-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wip-spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+.wip-bot-wrap {
+  position: relative;
+  z-index: 1;
+  width: 120px;
+  height: 104px;
+}
+
+.wip-bot {
+  display: block;
+}
+
+.wip-bot-shell {
+  fill: var(--color-panel);
+  stroke: var(--color-primary);
+  stroke-width: 3;
+}
+
+.wip-bot-panel {
+  fill: var(--color-bg);
+  stroke: var(--color-border);
+  stroke-width: 2;
+}
+
+.wip-bot-btn {
+  fill: var(--color-primary);
+}
+
+.wip-bot-line {
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.wip-bot-light {
+  fill: var(--color-warning);
+  animation: wip-blink-light 1.3s ease-in-out infinite;
+}
+
+.wip-bot-eye {
+  fill: var(--color-primary);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wip-blink-eye 4.5s ease-in-out infinite;
+}
+
+.wip-bot-mouth {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.wip-bot-arm-r {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: wip-wave 2.4s ease-in-out infinite;
+}
+
+@keyframes wip-blink-light {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+@keyframes wip-blink-eye {
+  0%, 92%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.1); }
+}
+
+@keyframes wip-wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-16deg); }
+  50% { transform: rotate(4deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.wip-wrench {
+  position: absolute;
+  right: 14px;
+  bottom: 26px;
+  z-index: 2;
+  color: var(--color-primary);
+  transform-origin: 70% 70%;
+  animation: wip-wrench-turn 2.4s ease-in-out infinite;
+}
+
+@keyframes wip-wrench-turn {
+  0%, 100% { transform: rotate(-22deg); }
+  50% { transform: rotate(18deg); }
+}
+
+.wip-spark {
+  position: absolute;
+  right: 30px;
+  bottom: 40px;
+  z-index: 2;
+  color: var(--color-warning);
+  opacity: 0;
+  animation: wip-spark-float 2.4s ease-out infinite;
+}
+
+.wip-spark-a {
+  animation-delay: 0.4s;
+}
+
+.wip-spark-b {
+  right: 12px;
+  bottom: 44px;
+  animation-delay: 1.4s;
+}
+
+@keyframes wip-spark-float {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translateY(-26px) scale(1); opacity: 0; }
+}
+
+.wip-card h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.wip-card p {
+  margin: 0 0 18px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.wip-progress {
+  height: 8px;
+  max-width: 220px;
+  margin: 0 auto 22px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.wip-progress-fill {
+  height: 100%;
+  width: 55%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-warning) 0 8px,
+    var(--color-text) 8px 16px
+  );
+  background-size: 32px 32px;
+  animation: wip-stripes 1s linear infinite;
+}
+
+@keyframes wip-stripes {
+  from { background-position: 0 0; }
+  to { background-position: 32px 0; }
+}
+
+.wip-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wip-actions .btn {
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="on"]) .wip-gear-a,
+  :root:not([data-motion="on"]) .wip-gear-b,
+  :root:not([data-motion="on"]) .wip-bot-light,
+  :root:not([data-motion="on"]) .wip-bot-eye,
+  :root:not([data-motion="on"]) .wip-bot-arm-r,
+  :root:not([data-motion="on"]) .wip-wrench,
+  :root:not([data-motion="on"]) .wip-spark,
+  :root:not([data-motion="on"]) .wip-progress-fill {
+    animation: none !important;
+  }
+}
+
+:root[data-motion="reduced"] .wip-gear-a,
+:root[data-motion="reduced"] .wip-gear-b,
+:root[data-motion="reduced"] .wip-bot-light,
+:root[data-motion="reduced"] .wip-bot-eye,
+:root[data-motion="reduced"] .wip-bot-arm-r,
+:root[data-motion="reduced"] .wip-wrench,
+:root[data-motion="reduced"] .wip-spark,
+:root[data-motion="reduced"] .wip-progress-fill {
+  animation: none !important;
+}

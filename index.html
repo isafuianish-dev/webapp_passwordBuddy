@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webapp Password Buddy</title>
+<link rel="stylesheet" href="https://isafuianish-dev.github.io/webapp_cdnBuddy/css/tokens.css">
+<link rel="stylesheet" href="https://isafuianish-dev.github.io/webapp_cdnBuddy/css/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/theme-init.js" data-app="webapp_passwordBuddy"></script>
+</head>
+<body>
+<div class="app wip-app">
+  <div class="wip-toolbar">
+    <button type="button" id="btnMotion" class="theme-toggle-btn" title="Toggle motion" aria-label="Toggle motion"></button>
+    <button type="button" id="btnTheme" class="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme"></button>
+  </div>
+
+  <main class="wip-card">
+    <div class="wip-scene" aria-hidden="true">
+      <svg class="wip-gear wip-gear-a" width="46" height="46" viewBox="0 0 46 46" fill="currentColor">
+        <circle cx="23" cy="23" r="10" fill="none" stroke="currentColor" stroke-width="4"/>
+        <rect x="21" y="1" width="4" height="8" rx="1"/>
+        <rect x="21" y="37" width="4" height="8" rx="1"/>
+        <rect x="1" y="21" width="8" height="4" rx="1"/>
+        <rect x="37" y="21" width="8" height="4" rx="1"/>
+        <rect x="21" y="1" width="4" height="8" rx="1" transform="rotate(45 23 23)"/>
+        <rect x="21" y="37" width="4" height="8" rx="1" transform="rotate(45 23 23)"/>
+        <rect x="1" y="21" width="8" height="4" rx="1" transform="rotate(45 23 23)"/>
+        <rect x="37" y="21" width="8" height="4" rx="1" transform="rotate(45 23 23)"/>
+      </svg>
+      <svg class="wip-gear wip-gear-b" width="30" height="30" viewBox="0 0 46 46" fill="currentColor">
+        <circle cx="23" cy="23" r="10" fill="none" stroke="currentColor" stroke-width="4"/>
+        <rect x="21" y="1" width="4" height="8" rx="1"/>
+        <rect x="21" y="37" width="4" height="8" rx="1"/>
+        <rect x="1" y="21" width="8" height="4" rx="1"/>
+        <rect x="37" y="21" width="8" height="4" rx="1"/>
+        <rect x="21" y="1" width="4" height="8" rx="1" transform="rotate(45 23 23)"/>
+        <rect x="21" y="37" width="4" height="8" rx="1" transform="rotate(45 23 23)"/>
+        <rect x="1" y="21" width="8" height="4" rx="1" transform="rotate(45 23 23)"/>
+        <rect x="37" y="21" width="8" height="4" rx="1" transform="rotate(45 23 23)"/>
+      </svg>
+
+      <div class="wip-bot-wrap">
+        <svg class="wip-bot" width="120" height="104" viewBox="0 0 120 104">
+          <line x1="60" y1="18" x2="60" y2="6" class="wip-bot-line"/>
+          <circle cx="60" cy="5" r="4" class="wip-bot-light"/>
+          <rect x="34" y="18" width="52" height="36" rx="12" class="wip-bot-shell"/>
+          <circle cx="48" cy="36" r="4" class="wip-bot-eye"/>
+          <circle cx="72" cy="36" r="4" class="wip-bot-eye"/>
+          <path d="M48 46 Q60 52 72 46" class="wip-bot-mouth"/>
+          <rect x="10" y="64" width="18" height="10" rx="5" class="wip-bot-shell wip-bot-arm-l"/>
+          <rect x="28" y="58" width="64" height="42" rx="14" class="wip-bot-shell"/>
+          <rect x="44" y="70" width="32" height="18" rx="4" class="wip-bot-panel"/>
+          <circle cx="52" cy="79" r="3" class="wip-bot-btn"/>
+          <circle cx="68" cy="79" r="3" class="wip-bot-btn"/>
+          <g class="wip-bot-arm-r">
+            <rect x="92" y="64" width="18" height="10" rx="5" class="wip-bot-shell"/>
+          </g>
+        </svg>
+
+        <svg class="wip-wrench" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+        <svg class="wip-spark wip-spark-a" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2 L13.6 9.6 L21 12 L13.6 14.4 L12 22 L10.4 14.4 L3 12 L10.4 9.6 Z"/>
+        </svg>
+        <svg class="wip-spark wip-spark-b" width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2 L13.6 9.6 L21 12 L13.6 14.4 L12 22 L10.4 14.4 L3 12 L10.4 9.6 Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <h1>Webapp Password Buddy</h1>
+    <p>Our robot is still tightening bolts on this one. Check back soon.</p>
+
+    <div class="wip-progress">
+      <div class="wip-progress-fill"></div>
+    </div>
+
+    <div class="wip-actions">
+      <a id="btnBrowseApps" class="btn btn-primary btn-icon" href="https://isafuianish-dev.github.io/webapp_myAppsBuddy/" title="Browse Apps" aria-label="Browse Apps"></a>
+      <a id="btnGoHome" class="btn btn-primary btn-icon" href="https://isafuianish-dev.github.io/" title="Go Home" aria-label="Go Home"></a>
+    </div>
+  </main>
+</div>
+
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/icons.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/theme.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
