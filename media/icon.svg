@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1.12" y="1.12" width="29.759999999999998" height="29.759999999999998" rx="5.76" ry="5.76" fill="none" stroke="currentColor" stroke-width="2.24"/>
+  <text x="16" y="20.8384" text-anchor="middle"
+        font-family="Menlo, Consolas, 'SF Mono', monospace"
+        font-size="13.44" font-weight="700" fill="currentColor">PW</text>
+</svg>

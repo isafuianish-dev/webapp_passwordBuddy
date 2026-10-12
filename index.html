@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Buddy</title>
+<link rel="icon" type="image/png" href="media/favicon.png">
+<link rel="stylesheet" href="https://isafuianish-dev.github.io/webapp_cdnBuddy/css/tokens.css">
+<link rel="stylesheet" href="https://isafuianish-dev.github.io/webapp_cdnBuddy/css/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/theme-init.js" data-app="webapp_passwordBuddy"></script>
+</head>
+<body>
+<div class="auth-screen" id="authScreen">
+  <div class="auth-card panel">
+    <div class="auth-brand">
+      <span class="auth-brand-icon" id="authBrandIcon" aria-hidden="true"><span class="icon" style="-webkit-mask-image:url(media/icon.svg);mask-image:url(media/icon.svg);"></span></span>
+      <h1>Password Buddy</h1>
+    </div>
+
+    <div class="auth-view" id="authViewSetup">
+      <p class="auth-lede">Create a master key to encrypt everything you store here. It never leaves your browser.</p>
+      <div class="form-group">
+        <label for="setupPassword">Master key</label>
+        <input type="password" id="setupPassword" class="form-control" autocomplete="new-password">
+      </div>
+      <div class="form-group">
+        <label for="setupPasswordConfirm">Confirm master key</label>
+        <input type="password" id="setupPasswordConfirm" class="form-control" autocomplete="new-password">
+      </div>
+      <p class="auth-error" id="setupError" hidden></p>
+      <p class="auth-warning" id="setupWarningIconWrap"><span id="setupWarningIcon" aria-hidden="true"></span>Write this down somewhere safe. If you forget it, your saved passwords cannot be recovered.</p>
+      <button type="button" id="btnSetup" class="btn btn-primary auth-submit">Create master key</button>
+    </div>
+
+    <div class="auth-view" id="authViewUnlock" hidden>
+      <p class="auth-lede">Enter your master key to unlock your vault.</p>
+      <div class="form-group">
+        <label for="unlockPassword">Master key</label>
+        <input type="password" id="unlockPassword" class="form-control" autocomplete="current-password">
+      </div>
+      <p class="auth-error" id="unlockError" hidden></p>
+      <button type="button" id="btnUnlock" class="btn btn-primary auth-submit">Unlock</button>
+      <button type="button" id="btnResetApp" class="auth-reset-link">Forgot your master key? Reset app data</button>
+    </div>
+  </div>
+</div>
+
+<div class="app" id="appRoot" hidden>
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-icon" aria-hidden="true"><span class="icon" style="-webkit-mask-image:url(media/icon.svg);mask-image:url(media/icon.svg);"></span></span>
+      <h1>Password Buddy</h1>
+    </div>
+    <div class="topbar-actions">
+      <div class="topbar-menu" id="lockMenuWrap">
+        <button id="btnLock" class="btn btn-ghost btn-icon" title="Lock / Master Key" aria-label="Lock or change master key" aria-haspopup="true" aria-expanded="false"></button>
+        <div class="topbar-menu-list" id="lockMenu" role="menu" hidden>
+          <button type="button" class="topbar-menu-item" id="menuLock" role="menuitem">
+            <span id="menuLockIcon" aria-hidden="true"></span>Lock
+          </button>
+          <button type="button" class="topbar-menu-item" id="menuChangeMasterKey" role="menuitem">
+            <span id="menuChangeMasterKeyIcon" aria-hidden="true"></span>Change Master Key
+          </button>
+        </div>
+      </div>
+      <button id="btnSettings" class="btn btn-ghost btn-icon" title="Settings" aria-label="Settings"></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="panel panel-books">
+      <div class="panel-header">
+        <div class="panel-header-actions">
+          <button type="button" id="btnAddBook" class="btn btn-primary">Add Book</button>
+          <button id="btnExportAll" class="btn btn-ghost btn-icon" title="Export all passwords as JSON" aria-label="Export passwords"></button>
+          <label class="btn btn-ghost btn-icon file-btn" title="Import passwords from JSON" aria-label="Import passwords">
+            <span class="file-btn-icon" id="fileBtnIcon"></span>
+            <input type="file" id="fileImportData" accept="application/json">
+          </label>
+        </div>
+      </div>
+      <ul id="bookList" class="book-list"></ul>
+      <p id="bookListEmpty" class="empty-hint" hidden>No books yet. <a href="#" id="linkLoadSampleSidebar" class="link-accent">Load sample</a>.</p>
+    </aside>
+
+    <main class="panel-main">
+      <div class="empty-state" id="emptyState"></div>
+
+      <div class="entries-content" id="entriesContent" hidden>
+        <div class="entries-header">
+          <div class="entries-header-title">
+            <h2 id="activeBookName">Book</h2>
+            <span class="entries-count" id="entriesCount">0</span>
+          </div>
+          <div class="entries-header-actions">
+            <input type="search" id="entrySearch" class="search-input" placeholder="Search" aria-label="Search entries">
+            <div class="tag-filter-dropdown" id="tagFilterDropdown" hidden></div>
+            <button type="button" id="btnToggleEntryView" class="btn btn-ghost btn-icon" title="Switch to list view" aria-label="Switch to list view" aria-pressed="false"></button>
+            <button type="button" id="btnNewEntry" class="btn btn-primary">New Password</button>
+          </div>
+        </div>
+        <p id="entriesEmpty" class="empty-hint" hidden>No passwords saved in this book yet.</p>
+        <div id="entryGrid" class="entry-grid"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/utils.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/icons.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/modal.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/theme.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/settings.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/markdown.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/manual.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
